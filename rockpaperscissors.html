@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //make a function for computer to have a random number from 1 to 3
+    //make 1 be rock 2 be paper and 3 be scissors
+    // human turn pick between one & three
+    //create condition for win and lose
+    //display result for both computer and human
+    //when reached 5 someone wins
+    
+    function computerPlay(){
+        weaponChoice = Math.floor(Math.random()*3) + 1;
+        if(weaponChoice == 1){
+            weaponChoice = "rock";
+        }
+        else if(weaponChoice == 2){
+            weaponChoice = "paper";
+        }
+        else if(weaponChoice == 3){
+            weaponChoice = "scissors";
+        }
+        return weaponChoice;
+    }
+    
+    function playRound(playerSelection, computerSelection){
+        if(playerSelection.toLowerCase()=="rock" && computerSelection == "paper"){
+            console.log("You Lose! Paper beats Rock");
+            computerwon++;
+        }
+        else if(playerSelection.toLowerCase() == "rock" && computerSelection == "scissors"){
+            console.log("You Won! Rock beats Scissors");
+            playerwon++;
+        }
+        else if(playerSelection.toLowerCase()=="paper" && computerSelection == "rock"){
+            console.log("You Won! Paper beats Rock");
+            playerwon++;
+        }
+        else if(playerSelection.toLowerCase()=="paper" && computerSelection == "scissors"){
+            console.log("You Lose! Scissors beats Paper");
+            computerwon++;
+        }
+        else if(playerSelection.toLowerCase()=="scissors" && computerSelection == "rock"){
+            console.log("You Lose! Rock beats Scissors");
+            computerwon++;
+        }
+        else if(playerSelection.toLowerCase()=="scissors" && computerSelection == "paper"){
+            console.log("You Won! Scissors beats Paper");
+            playerwon++;
+        }
+        else if(playerSelection.toLowerCase === computerSelection){
+            console.log("It's a Tie!");
+        }
+    }
+
+    function game(){
+        for(i=1; i<=5; i++){
+
+            playerSelection = prompt("Rock, Paper, or Scissors", "");
+            computerSelection = computerPlay();
+
+            console.log("player: "+playerSelection+ " com: "+computerSelection);
+            playRound(playerSelection, computerSelection);
+            console.log(`Player: ${playerwon} ; computer: ${computerwon}`);
+        }
+        if(playerwon > computerwon){
+            console.log("You Won!");
+        }
+        else{
+            console.log("You Lose!");
+        }
+    }
+
+    let playerSelection;
+    let computerSelection;
+    let playerwon=0;
+    let computerwon=0;
+
+    game();
+
+</script>
+</html>
